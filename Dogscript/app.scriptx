@@ -1,0 +1,5 @@
+﻿[Dogscript.Start]
+Apptype: x.dogapp.popup.advanced
+ScriptX Popup
+Test Popup
+[Dogscript.End]
