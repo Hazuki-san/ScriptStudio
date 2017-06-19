@@ -1,0 +1,11 @@
+D:\visual studio 2010\Projects\Dogcument\Dogcument\bin\Debug\Dogcument.exe
+D:\visual studio 2010\Projects\Dogcument\Dogcument\bin\Debug\Dogcument.pdb
+D:\visual studio 2010\Projects\Dogcument\Dogcument\bin\Debug\Dogcument.xml
+D:\visual studio 2010\Projects\Dogcument\Dogcument\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\visual studio 2010\Projects\Dogcument\Dogcument\obj\x86\Debug\Dogcument.Resources.resources
+D:\visual studio 2010\Projects\Dogcument\Dogcument\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\visual studio 2010\Projects\Dogcument\Dogcument\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\visual studio 2010\Projects\Dogcument\Dogcument\obj\x86\Debug\Dogcument.exe
+D:\visual studio 2010\Projects\Dogcument\Dogcument\obj\x86\Debug\Dogcument.xml
+D:\visual studio 2010\Projects\Dogcument\Dogcument\obj\x86\Debug\Dogcument.pdb
+D:\visual studio 2010\Projects\Dogcument\Dogcument\obj\x86\Debug\Dogcument.DogHome.resources

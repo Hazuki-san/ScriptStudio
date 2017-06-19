@@ -2,19 +2,20 @@
 
 Public Class DogHome
 
+    Dim DistroName = "Dogcument"
     Dim DogTitle = ""
 
     Private Sub DogHome_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         If DogTitle = "" Then
-            Me.Text = "Dogcument"
+            Me.Text = DistroName
             RichEditor.Hide()
             RichEditor.ReadOnly = True
             StatusLabel.Text = "Please click, ""File -> New"" to create new Dogcument"
-            RichEditor.Text = "Welcome to Dogcument!"
+            RichEditor.Text = "Welcome to " & DistroName & "!"
             RichEditor.AppendText(vbNewLine & "To create new Dogcument,")
             RichEditor.AppendText(vbNewLine & "Please click, Files -> New (or press ""CTRL + N"")")
         Else
-            Me.Text = "Dogcument - " & DogTitle
+            Me.Text = DistroName & " - " & DogTitle
             RichEditor.Show()
             RichEditor.ReadOnly = False
             StatusLabel.Text = DogTitle
@@ -24,7 +25,7 @@ Public Class DogHome
     End Sub
     Private Sub DogHome_Closing(ByVal sender As Object, ByVal e As FormClosingEventArgs) Handles MyBase.FormClosing
         If DogTitle = "" Then
-            If MessageBox.Show("Are you sure you want to exit ?", "Exit Dogcument", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
+            If MessageBox.Show("Are you sure you want to exit ?", "Exit " & DistroName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
 
                 ' Cancel the Closing event from closing the form.
 
@@ -32,7 +33,7 @@ Public Class DogHome
 
             End If
         Else
-            If MessageBox.Show("Do you want to save this file before closing ?", "Exit Dogcument", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+            If MessageBox.Show("Do you want to save this file before closing ?", "Exit " & DistroName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                 SaveToolStripMenuItem.PerformClick()
             End If
         End If
@@ -46,7 +47,7 @@ Public Class DogHome
                 oReader = New StreamReader(path, True)
                 RichEditor.Text = oReader.ReadToEnd
                 DogTitle = path
-                Me.Text = "Dogcument - " & DogTitle
+                Me.Text = DistroName & " - " & DogTitle
                 StatusLabel.Text = DogTitle
                 oReader.Close()
                 RichEditor.ReadOnly = False
@@ -107,7 +108,7 @@ Public Class DogHome
                 oReader = New StreamReader(path, True)
                 RichEditor.Text = oReader.ReadToEnd
                 DogTitle = path
-                Me.Text = "Dogcument - " & DogTitle
+                Me.Text = DistroName & " - " & DogTitle
                 StatusLabel.Text = DogTitle
                 oReader.Close()
                 RichEditor.ReadOnly = False
@@ -144,36 +145,41 @@ Public Class DogHome
     End Sub
 
     Private Sub NewToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NewToolStripMenuItem.Click
-        If RichEditor.ReadOnly = True = True Then
-            RichEditor.ReadOnly = False
-            RichEditor.Show()
-            NewToolStripMenuItem.PerformClick()
-        Else
-            Dim myStream As Stream
-            Dim saveFileDialog1 As New SaveFileDialog()
+        Dim saveFileDialog1 As New SaveFileDialog()
 
-            saveFileDialog1.Filter = "Dogcument (*.dog)|*.dog|DogApp (*.dogapp)|*.dogapp|Dogscript (*.ds)|*.ds|All files (*.*)|*.*"
-            saveFileDialog1.FilterIndex = 1
-            saveFileDialog1.DefaultExt = "dog"
-            saveFileDialog1.FileName = ""
-            saveFileDialog1.RestoreDirectory = True
+        saveFileDialog1.Filter = "Dogcument (*.dog)|*.dog|DogApp (*.dogapp)|*.dogapp|Dogscript (*.ds)|*.ds|All files (*.*)|*.*"
+        saveFileDialog1.FilterIndex = 1
+        saveFileDialog1.DefaultExt = "dog"
+        saveFileDialog1.FileName = ""
+        saveFileDialog1.RestoreDirectory = True
 
-            If saveFileDialog1.ShowDialog() = DialogResult.OK Then
+        If saveFileDialog1.ShowDialog() = DialogResult.OK Then
+            If DogTitle = "" = False Then
+                If MessageBox.Show("Do you want to save this file before opening another files ?", "Dropped!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                    SaveToolStripMenuItem.PerformClick()
+                End If
+            Else
+            End If
+            If RichEditor.ReadOnly = True Then
+                RichEditor.ReadOnly = False
+                RichEditor.Show()
+                'd
                 RichEditor.Text = ""
                 System.IO.File.WriteAllText(saveFileDialog1.FileName, RichEditor.Text)
                 DogTitle = saveFileDialog1.FileName
-                Me.Text = "Dogcument - " & DogTitle
+                Me.Text = DistroName & " - " & DogTitle
+                StatusLabel.Text = DogTitle
+            Else
+                RichEditor.Text = ""
+                System.IO.File.WriteAllText(saveFileDialog1.FileName, RichEditor.Text)
+                DogTitle = saveFileDialog1.FileName
+                Me.Text = DistroName & " - " & DogTitle
                 StatusLabel.Text = DogTitle
             End If
         End If
     End Sub
 
     Private Sub OpenToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OpenToolStripMenuItem.Click
-        If RichEditor.ReadOnly = True = True Then
-            RichEditor.ReadOnly = False
-            RichEditor.Show()
-            OpenToolStripMenuItem.PerformClick()
-        Else
             Dim oReader As StreamReader
             Dim OpenFileDialog1 As New OpenFileDialog()
 
@@ -184,11 +190,27 @@ Public Class DogHome
             OpenFileDialog1.Filter = "Dogcument (*.dog)|*.dog|DogApp (*.dogapp)|*.dogapp|Dogscript (*.ds)|*.ds|All files (*.*)|*.*"
             OpenFileDialog1.Multiselect = False
 
-            If OpenFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
+        If OpenFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
+            If DogTitle = "" = False Then
+                If MessageBox.Show("Do you want to save this file before opening another files ?", "Dropped!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                    SaveToolStripMenuItem.PerformClick()
+                End If
+            Else
+            End If
+            If RichEditor.ReadOnly = True = True Then
+                RichEditor.ReadOnly = False
+                RichEditor.Show()
                 oReader = New StreamReader(OpenFileDialog1.FileName, True)
                 RichEditor.Text = oReader.ReadToEnd
                 DogTitle = OpenFileDialog1.FileName
-                Me.Text = "Dogcument - " & DogTitle
+                Me.Text = DistroName & " - " & DogTitle
+                StatusLabel.Text = DogTitle
+                oReader.Close()
+            Else
+                oReader = New StreamReader(OpenFileDialog1.FileName, True)
+                RichEditor.Text = oReader.ReadToEnd
+                DogTitle = OpenFileDialog1.FileName
+                Me.Text = DistroName & " - " & DogTitle
                 StatusLabel.Text = DogTitle
                 oReader.Close()
             End If
@@ -202,7 +224,6 @@ Public Class DogHome
             If My.Computer.FileSystem.FileExists(DogTitle) = True Then
                 My.Computer.FileSystem.WriteAllText(DogTitle, RichEditor.Text, False)
             ElseIf My.Computer.FileSystem.FileExists(DogTitle) = False Then
-                Dim myStream As Stream
                 Dim saveFileDialog1 As New SaveFileDialog()
 
                 saveFileDialog1.Filter = "Dogcument (*.dog)|*.dog|DogApp (*.dogapp)|*.dogapp|Dogscript (*.ds)|*.ds|All files (*.*)|*.*"
@@ -214,7 +235,7 @@ Public Class DogHome
                 If saveFileDialog1.ShowDialog() = DialogResult.OK Then
                     System.IO.File.WriteAllText(saveFileDialog1.FileName, RichEditor.Text)
                     DogTitle = saveFileDialog1.FileName
-                    Me.Text = "Dogcument - " & DogTitle
+                    Me.Text = DistroName & " - " & DogTitle
                     StatusLabel.Text = DogTitle
                 End If
             End If
@@ -225,7 +246,6 @@ Public Class DogHome
         If RichEditor.ReadOnly = True Then
             MessageBox.Show("To create new file, Please click ""File -> New""", "Bark!", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
-            Dim myStream As Stream
             Dim saveFileDialog1 As New SaveFileDialog()
 
             saveFileDialog1.Filter = "Dogcument (*.dog)|*.dog|DogApp (*.dogapp)|*.dogapp|Dogscript (*.ds)|*.ds|All files (*.*)|*.*"
@@ -237,18 +257,22 @@ Public Class DogHome
             If saveFileDialog1.ShowDialog() = DialogResult.OK Then
                 System.IO.File.WriteAllText(saveFileDialog1.FileName, RichEditor.Text)
                 DogTitle = saveFileDialog1.FileName
-                Me.Text = "Dogcument - " & DogTitle
+                Me.Text = DistroName & " - " & DogTitle
                 StatusLabel.Text = DogTitle
             End If
         End If
     End Sub
 
     Private Sub PrintToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PrintToolStripMenuItem.Click
-
+        If MessageBox.Show("Printing?", "Developer", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error) = DialogResult.Retry Then
+            MessageBox.Show("Save this as *.txt and print, It should be Ok!", "Developer", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
     End Sub
 
     Private Sub PrintPreviewToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PrintPreviewToolStripMenuItem.Click
-
+        If MessageBox.Show("Now, you cannot Preview anything", "Developer", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error) = DialogResult.Retry Then
+            MessageBox.Show("Sorry :(", "Developer", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
     End Sub
 
     Private Sub ExitToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitToolStripMenuItem.Click
@@ -291,13 +315,65 @@ Public Class DogHome
     End Sub
 
     Private Sub CloseProjectToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CloseProjectToolStripMenuItem.Click
-        DogTitle = ""
-        Me.Text = "Dogcument"
-        RichEditor.Hide()
-        RichEditor.ReadOnly = True
-        StatusLabel.Text = "Please click, ""File -> New"" to create new Dogcument"
-        RichEditor.Text = "Welcome to Dogcument!"
-        RichEditor.AppendText(vbNewLine & "To create new Dogcument,")
-        RichEditor.AppendText(vbNewLine & "Please click, Files -> New (or press ""CTRL + N"")")
+        If DogTitle = "" = False Then
+            If MessageBox.Show("Do you want to save this file before closing ?", "Exit " & DistroName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                SaveToolStripMenuItem.PerformClick()
+            End If
+            DogTitle = ""
+            Me.Text = DistroName
+            RichEditor.Hide()
+            RichEditor.ReadOnly = True
+            StatusLabel.Text = "Please click, ""File -> New"" to create new Dogcument"
+            RichEditor.Text = "Welcome to " & DistroName & "!"
+            RichEditor.AppendText(vbNewLine & "To create new Dogcument,")
+            RichEditor.AppendText(vbNewLine & "Please click, Files -> New (or press ""CTRL + N"")")
+        Else
+            DogTitle = ""
+            Me.Text = DistroName
+            RichEditor.Hide()
+            RichEditor.ReadOnly = True
+            StatusLabel.Text = "Please click, ""File -> New"" to create new Dogcument"
+            RichEditor.Text = "Welcome to " & DistroName & "!"
+            RichEditor.AppendText(vbNewLine & "To create new Dogcument,")
+            RichEditor.AppendText(vbNewLine & "Please click, Files -> New (or press ""CTRL + N"")")
+        End If
+    End Sub
+
+    Private Sub AboutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AboutToolStripMenuItem.Click
+        AboutDog.Show()
+    End Sub
+
+    Private Sub DogcryptToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DogcryptToolStripMenuItem.Click
+        Encrypt.Show()
+    End Sub
+
+    Private Sub CustomizeToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CustomizeToolStripMenuItem.Click
+        If MessageBox.Show("Customize this app?", "Developer", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error) = DialogResult.Retry Then
+            MessageBox.Show("NOPE!", "Developer", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+    End Sub
+
+    Private Sub OptionsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OptionsToolStripMenuItem.Click
+        If MessageBox.Show("Too many options!", "Developer", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error) = DialogResult.Retry Then
+            MessageBox.Show("Sorry :(", "Developer", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+    End Sub
+
+    Private Sub ContentsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ContentsToolStripMenuItem.Click
+        If MessageBox.Show("Think creative!", "Developer", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error) = DialogResult.Retry Then
+            MessageBox.Show("To make your contents!!!", "Developer", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+    End Sub
+
+    Private Sub IndexToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles IndexToolStripMenuItem.Click
+        If MessageBox.Show("How about index.html ?", "Developer", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error) = DialogResult.Retry Then
+            MessageBox.Show("Don't like this joke?", "Developer", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+    End Sub
+
+    Private Sub SearchToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SearchToolStripMenuItem.Click
+        If MessageBox.Show("Google It!", "Developer", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error) = DialogResult.Retry Then
+            MessageBox.Show("What you can get?", "Developer", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
     End Sub
 End Class

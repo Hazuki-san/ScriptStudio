@@ -9,3 +9,11 @@ D:\visual studio 2010\Projects\Dogcument\Dogcument\obj\x86\Debug\Dogcument.exe
 D:\visual studio 2010\Projects\Dogcument\Dogcument\obj\x86\Debug\Dogcument.xml
 D:\visual studio 2010\Projects\Dogcument\Dogcument\obj\x86\Debug\Dogcument.pdb
 D:\visual studio 2010\Projects\Dogcument\Dogcument\obj\x86\Debug\Dogcument.DogHome.resources
+D:\visual studio 2010\Projects\Dogcument\Dogcument\obj\x86\Debug\Dogcument.AboutDog.resources
+D:\visual studio 2010\Projects\Dogcument\Dogcument\obj\x86\Debug\Dogcument.DogSplash.resources
+D:\visual studio 2010\Projects\Dogcument\Dogcument\bin\Debug\Dogcument.exe.manifest
+D:\visual studio 2010\Projects\Dogcument\Dogcument\bin\Debug\Dogcument.application
+D:\visual studio 2010\Projects\Dogcument\Dogcument\obj\x86\Debug\Dogcument.TrustInfo.xml
+D:\visual studio 2010\Projects\Dogcument\Dogcument\obj\x86\Debug\Dogcument.exe.manifest
+D:\visual studio 2010\Projects\Dogcument\Dogcument\obj\x86\Debug\Dogcument.application
+D:\visual studio 2010\Projects\Dogcument\Dogcument\obj\x86\Debug\Dogcument.Encrypt.resources
