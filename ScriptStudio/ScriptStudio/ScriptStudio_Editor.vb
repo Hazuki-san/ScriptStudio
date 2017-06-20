@@ -66,9 +66,11 @@ Public Class ScriptStudio_Editor
                 dogend = lines(lines.Length - 1)
                 'dog
                 If dogarg1 = "" Then
-                    MsgBox("Error: dogarg1 cannot be null.", MsgBoxStyle.Critical, "Failed to start " & apptype & " on the Dogscript Host")
+                    MsgBox("Error: dogarg1 cannot be null.", MsgBoxStyle.Critical, "Failed to start " & apptype & " on the Demza Script Host")
+                ElseIf path.EndsWith(".dogapp") Then
+                    MsgBox("Error: DogApp is unsupported in Demza Script Host", MsgBoxStyle.Critical, "Failed to start " & apptype & " on the Demza Script Host")
                 ElseIf dogveri = "[DogApp]" And apptype.StartsWith("Apptype: ") And apptype.EndsWith("dogapp.popup") And dogend.StartsWith("[DogEnd]") Then
-                    MsgBox(dogapp, MsgBoxStyle.OkOnly, "Dogscript Host")
+                    MsgBox(dogapp, MsgBoxStyle.OkOnly, "Demza Script Host")
                 ElseIf dogveri = "[DogApp]" And apptype.StartsWith("Apptype: ") And apptype.EndsWith("dogapp.popup.advanced") And dogend.StartsWith("[DogEnd]") Then
                     MessageBox.Show(dogapp, dogarg1)
                 ElseIf dogveri = "[DogApp]" And apptype.StartsWith("Apptype: ") And apptype.EndsWith("dogapp.startshell") And dogend.StartsWith("[DogEnd]") Then
@@ -76,17 +78,15 @@ Public Class ScriptStudio_Editor
                 ElseIf path.EndsWith(".ds") And dogveri = "[Dogscript.Start]" And apptype.StartsWith("Apptype: ") And apptype.EndsWith("dogscript.script.directaccess") And dogend.StartsWith("[Dogscript.End]") Then
                     If dogapp = "dogcument.stop" Then
                     ElseIf dogapp = "dogcument.error" OrElse dogapp = "dogcument.bark" And dogarg1.StartsWith("enabled: ") And dogarg1.EndsWith("true") Then
-                        MessageBox.Show("Error: Cursed by Dogscript", "Bark!", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        MessageBox.Show("Error: Cursed by Script", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
-                ElseIf path.EndsWith(".ds") OrElse path.EndsWith(".scriptx") And dogveri = "[Dogscript.Start]" And apptype.StartsWith("Apptype: ") And apptype.EndsWith("x.dogapp.popup.advanced") And dogend.StartsWith("[Dogscript.End]") Then
+                ElseIf path.EndsWith(".ds") And dogveri = "[Dogscript.Start]" And apptype.StartsWith("Apptype: ") And apptype.EndsWith("x.dogapp.popup.advanced") And dogend.StartsWith("[Dogscript.End]") Then
                     MessageBox.Show(dogapp, "ScriptX - " & dogarg1)
-                ElseIf path.EndsWith(".dogapp") And dogveri = "[Dogscript.Start]" Then
-                    MsgBox("Error: DogApp is cannot execute the Dogscript file!", MsgBoxStyle.Critical, "Failed to start " & apptype & " on the Dogscript Host")
                 Else
-                    MsgBox("Error: Script Error, Please Check your script again.", MsgBoxStyle.Critical, "Failed to start " & apptype & " on the Dogscript Host")
+                    MsgBox("Error: Script Error, Please Check your script again.", MsgBoxStyle.Critical, "Failed to start " & apptype & " on the Demza Script Host")
                 End If
             Else
-                MessageBox.Show("What is this?", "Bark!", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("This format is not supported.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         Next
     End Sub
@@ -104,7 +104,7 @@ Public Class ScriptStudio_Editor
         Dim files() As String = e.Data.GetData(DataFormats.FileDrop)
         For Each path In files
             Dim oReader As StreamReader
-            If path.EndsWith(".dog") = True OrElse path.EndsWith(".txt") Then
+            If path.EndsWith(".dog") = True OrElse path.EndsWith(".txt") OrElse path.EndsWith(".ds") Then
                 oReader = New StreamReader(path, True)
                 RichEditor.Text = oReader.ReadToEnd
                 DogTitle = path
@@ -114,7 +114,7 @@ Public Class ScriptStudio_Editor
                 RichEditor.ReadOnly = False
                 RichEditor.Show()
             Else
-                MessageBox.Show("What is this?", "Bark!", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("This format is not supported.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         Next
     End Sub
@@ -147,7 +147,7 @@ Public Class ScriptStudio_Editor
     Private Sub NewToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NewToolStripMenuItem.Click
         Dim saveFileDialog1 As New SaveFileDialog()
 
-        saveFileDialog1.Filter = "Dogcument (*.dog)|*.dog|DogApp (*.dogapp)|*.dogapp|Dogscript (*.ds)|*.ds|All files (*.*)|*.*"
+        saveFileDialog1.Filter = "Script Studio Simple Code (*.dog)|*.dog|Demza Script (*.ds)|*.ds|All files (*.*)|*.*"
         saveFileDialog1.FilterIndex = 1
         saveFileDialog1.DefaultExt = "dog"
         saveFileDialog1.FileName = ""
@@ -163,19 +163,12 @@ Public Class ScriptStudio_Editor
             If RichEditor.ReadOnly = True Then
                 RichEditor.ReadOnly = False
                 RichEditor.Show()
-                'd
-                RichEditor.Text = ""
-                System.IO.File.WriteAllText(saveFileDialog1.FileName, RichEditor.Text)
-                DogTitle = saveFileDialog1.FileName
-                Me.Text = DistroName & " - " & DogTitle
-                StatusLabel.Text = DogTitle
-            Else
-                RichEditor.Text = ""
-                System.IO.File.WriteAllText(saveFileDialog1.FileName, RichEditor.Text)
-                DogTitle = saveFileDialog1.FileName
-                Me.Text = DistroName & " - " & DogTitle
-                StatusLabel.Text = DogTitle
             End If
+            RichEditor.Text = ""
+            System.IO.File.WriteAllText(saveFileDialog1.FileName, RichEditor.Text)
+            DogTitle = saveFileDialog1.FileName
+            Me.Text = DistroName & " - " & DogTitle
+            StatusLabel.Text = DogTitle
         End If
     End Sub
 
@@ -187,7 +180,7 @@ Public Class ScriptStudio_Editor
         OpenFileDialog1.CheckPathExists = True
         OpenFileDialog1.DefaultExt = "dog"
         OpenFileDialog1.FileName = ""
-        OpenFileDialog1.Filter = "Dogcument (*.dog)|*.dog|DogApp (*.dogapp)|*.dogapp|Dogscript (*.ds)|*.ds|All files (*.*)|*.*"
+        OpenFileDialog1.Filter = "Script Studio Simple Code (*.dog)|*.dog|Demza Script (*.ds)|*.ds|All files (*.*)|*.*"
         OpenFileDialog1.Multiselect = False
 
         If OpenFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
@@ -197,23 +190,16 @@ Public Class ScriptStudio_Editor
                 End If
             Else
             End If
-            If RichEditor.ReadOnly = True = True Then
+            If RichEditor.ReadOnly = True Then
                 RichEditor.ReadOnly = False
                 RichEditor.Show()
-                oReader = New StreamReader(OpenFileDialog1.FileName, True)
-                RichEditor.Text = oReader.ReadToEnd
-                DogTitle = OpenFileDialog1.FileName
-                Me.Text = DistroName & " - " & DogTitle
-                StatusLabel.Text = DogTitle
-                oReader.Close()
-            Else
-                oReader = New StreamReader(OpenFileDialog1.FileName, True)
-                RichEditor.Text = oReader.ReadToEnd
-                DogTitle = OpenFileDialog1.FileName
-                Me.Text = DistroName & " - " & DogTitle
-                StatusLabel.Text = DogTitle
-                oReader.Close()
             End If
+            oReader = New StreamReader(OpenFileDialog1.FileName, True)
+            RichEditor.Text = oReader.ReadToEnd
+            DogTitle = OpenFileDialog1.FileName
+            Me.Text = DistroName & " - " & DogTitle
+            StatusLabel.Text = DogTitle
+            oReader.Close()
         End If
     End Sub
 
@@ -226,7 +212,7 @@ Public Class ScriptStudio_Editor
             ElseIf My.Computer.FileSystem.FileExists(DogTitle) = False Then
                 Dim saveFileDialog1 As New SaveFileDialog()
 
-                saveFileDialog1.Filter = "Dogcument (*.dog)|*.dog|DogApp (*.dogapp)|*.dogapp|Dogscript (*.ds)|*.ds|All files (*.*)|*.*"
+                saveFileDialog1.Filter = "Script Studio Simple Code (*.dog)|*.dog|Demza Script (*.ds)|*.ds|All files (*.*)|*.*"
                 saveFileDialog1.FilterIndex = 1
                 saveFileDialog1.DefaultExt = "dog"
                 saveFileDialog1.FileName = ""
@@ -248,7 +234,7 @@ Public Class ScriptStudio_Editor
         Else
             Dim saveFileDialog1 As New SaveFileDialog()
 
-            saveFileDialog1.Filter = "Dogcument (*.dog)|*.dog|DogApp (*.dogapp)|*.dogapp|Dogscript (*.ds)|*.ds|All files (*.*)|*.*"
+            saveFileDialog1.Filter = "Script Studio Simple Code (*.dog)|*.dog|Demza Script (*.ds)|*.ds|All files (*.*)|*.*"
             saveFileDialog1.FilterIndex = 1
             saveFileDialog1.DefaultExt = "dog"
             saveFileDialog1.FileName = ""
@@ -319,24 +305,15 @@ Public Class ScriptStudio_Editor
             If MessageBox.Show("Do you want to save this file before closing ?", "Exit " & DistroName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                 SaveToolStripMenuItem.PerformClick()
             End If
-            DogTitle = ""
-            Me.Text = DistroName
-            RichEditor.Hide()
-            RichEditor.ReadOnly = True
-            StatusLabel.Text = "Please click, ""File -> New"" to create new Dogcument"
-            RichEditor.Text = "Welcome to " & DistroName & "!"
-            RichEditor.AppendText(vbNewLine & "To create new Dogcument,")
-            RichEditor.AppendText(vbNewLine & "Please click, Files -> New (or press ""CTRL + N"")")
-        Else
-            DogTitle = ""
-            Me.Text = DistroName
-            RichEditor.Hide()
-            RichEditor.ReadOnly = True
-            StatusLabel.Text = "Please click, ""File -> New"" to create new Dogcument"
-            RichEditor.Text = "Welcome to " & DistroName & "!"
-            RichEditor.AppendText(vbNewLine & "To create new Dogcument,")
-            RichEditor.AppendText(vbNewLine & "Please click, Files -> New (or press ""CTRL + N"")")
         End If
+        DogTitle = ""
+        Me.Text = DistroName
+        RichEditor.Hide()
+        RichEditor.ReadOnly = True
+        StatusLabel.Text = "Please click, ""File -> New"" to create new Script"
+        RichEditor.Text = "Welcome to " & DistroName & "!"
+        RichEditor.AppendText(vbNewLine & "To create new Script,")
+        RichEditor.AppendText(vbNewLine & "Please click, Files -> New (or press ""CTRL + N"")")
     End Sub
 
     Private Sub AboutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AboutToolStripMenuItem.Click

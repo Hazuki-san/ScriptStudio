@@ -8,14 +8,14 @@
     <framework targetVersion="4.0" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="scriptstudio.exe.manifest" size="4291">
+    <dependentAssembly dependencyType="install" codebase="scriptstudio.exe.manifest" size="4292">
       <assemblyIdentity name="scriptstudio.exe" version="1.0.0.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>wpxcckj1/XYX6TZQn0B5nONU47Y=</dsig:DigestValue>
+        <dsig:DigestValue>WhGc+Mtmk0Q3DAupc8qRKlpLaWg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="scriptstudio.exe" size="91648">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="scriptstudio.exe" size="91136">
       <assemblyIdentity name="scriptstudio" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>tqHBUSKbk72KUQkjCbTqlDZV5pY=</dsig:DigestValue>
+        <dsig:DigestValue>Uy0wjhMyU1TOhJfa0SyRnPeJ+qI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
