@@ -1,3 +1,2 @@
-# Dogcument
-Dog inspired Text Editor
-(Alpha Source Code has been removed.)
+# Demza Script Studio
+Editor for Demza Script Files
