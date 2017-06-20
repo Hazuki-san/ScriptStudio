@@ -74,7 +74,7 @@ Partial Class DogHome
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.EditToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(530, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(632, 24)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -238,25 +238,25 @@ Partial Class DogHome
         'CustomizeToolStripMenuItem
         '
         Me.CustomizeToolStripMenuItem.Name = "CustomizeToolStripMenuItem"
-        Me.CustomizeToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.CustomizeToolStripMenuItem.Size = New System.Drawing.Size(123, 22)
         Me.CustomizeToolStripMenuItem.Text = "&Customize"
         '
         'OptionsToolStripMenuItem
         '
         Me.OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem"
-        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(123, 22)
         Me.OptionsToolStripMenuItem.Text = "&Options"
         '
         'ToolStripSeparator6
         '
         Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(149, 6)
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(120, 6)
         '
         'DogcryptToolStripMenuItem
         '
         Me.DogcryptToolStripMenuItem.Name = "DogcryptToolStripMenuItem"
         Me.DogcryptToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.DogcryptToolStripMenuItem.Text = "Dogcrypt"
+        Me.DogcryptToolStripMenuItem.Text = "Dogcrypt (ไทย)"
         '
         'HelpToolStripMenuItem
         '
@@ -268,40 +268,41 @@ Partial Class DogHome
         'ContentsToolStripMenuItem
         '
         Me.ContentsToolStripMenuItem.Name = "ContentsToolStripMenuItem"
-        Me.ContentsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ContentsToolStripMenuItem.Size = New System.Drawing.Size(118, 22)
         Me.ContentsToolStripMenuItem.Text = "&Contents"
         '
         'IndexToolStripMenuItem
         '
         Me.IndexToolStripMenuItem.Name = "IndexToolStripMenuItem"
-        Me.IndexToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.IndexToolStripMenuItem.Size = New System.Drawing.Size(118, 22)
         Me.IndexToolStripMenuItem.Text = "&Index"
         '
         'SearchToolStripMenuItem
         '
         Me.SearchToolStripMenuItem.Name = "SearchToolStripMenuItem"
-        Me.SearchToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SearchToolStripMenuItem.Size = New System.Drawing.Size(118, 22)
         Me.SearchToolStripMenuItem.Text = "&Search"
         '
         'toolStripSeparator5
         '
         Me.toolStripSeparator5.Name = "toolStripSeparator5"
-        Me.toolStripSeparator5.Size = New System.Drawing.Size(149, 6)
+        Me.toolStripSeparator5.Size = New System.Drawing.Size(115, 6)
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(118, 22)
         Me.AboutToolStripMenuItem.Text = "&About..."
         '
         'RichEditor
         '
         Me.RichEditor.BackColor = System.Drawing.Color.White
         Me.RichEditor.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.RichEditor.Dock = System.Windows.Forms.DockStyle.Fill
         Me.RichEditor.Font = New System.Drawing.Font("Arial Unicode MS", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RichEditor.Location = New System.Drawing.Point(0, 27)
+        Me.RichEditor.Location = New System.Drawing.Point(0, 24)
         Me.RichEditor.Name = "RichEditor"
-        Me.RichEditor.Size = New System.Drawing.Size(530, 336)
+        Me.RichEditor.Size = New System.Drawing.Size(632, 407)
         Me.RichEditor.TabIndex = 1
         Me.RichEditor.Text = ""
         Me.RichEditor.WordWrap = False
@@ -324,10 +325,10 @@ Partial Class DogHome
         '
         Me.DogStatus.BackColor = System.Drawing.Color.LightSteelBlue
         Me.DogStatus.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StatusLabel})
-        Me.DogStatus.Location = New System.Drawing.Point(0, 366)
+        Me.DogStatus.Location = New System.Drawing.Point(0, 431)
         Me.DogStatus.Name = "DogStatus"
         Me.DogStatus.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.DogStatus.Size = New System.Drawing.Size(530, 22)
+        Me.DogStatus.Size = New System.Drawing.Size(632, 22)
         Me.DogStatus.SizingGrip = False
         Me.DogStatus.TabIndex = 2
         Me.DogStatus.Text = "Status"
@@ -355,15 +356,13 @@ Partial Class DogHome
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(530, 388)
+        Me.ClientSize = New System.Drawing.Size(632, 453)
         Me.Controls.Add(Me.ButtonEx)
         Me.Controls.Add(Me.RichEditor)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.DogStatus)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
-        Me.MaximizeBox = False
         Me.Name = "DogHome"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Dogcument"

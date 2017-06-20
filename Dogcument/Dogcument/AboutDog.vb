@@ -13,7 +13,7 @@
         ' TODO: Customize the application's assembly information in the "Application" pane of the project 
         '    properties dialog (under the "Project" menu).
         Me.LabelProductName.Text = My.Application.Info.ProductName
-        Me.LabelVersion.Text = String.Format("Version {0}", My.Application.Info.Version.ToString)
+        Me.LabelVersion.Text = String.Format("Version {0}", Me.ProductVersion)
         Me.LabelCopyright.Text = My.Application.Info.Copyright
         Me.LabelCompanyName.Text = My.Application.Info.CompanyName
         Me.TextBoxDescription.Text = My.Application.Info.Description & vbNewLine & vbNewLine & "(Thanks ""Thad Van den Bosch"" for the Encrypt/Decrypt code!" & vbNewLine & "https://www.codeproject.com/Articles/12092/Encrypt-Decrypt-Files-in-VB-NET-Using-Rijndael" & ")" & vbNewLine & vbNewLine & "Icon by MannMitDerTarnjacke (" & "http://mannmitdertarnjacke.deviantart.com/art/Aurora-287069107" & ")"

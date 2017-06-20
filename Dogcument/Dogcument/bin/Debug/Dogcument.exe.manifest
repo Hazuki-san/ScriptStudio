@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Dogcument.exe" size="100864">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Dogcument.exe" size="100352">
       <assemblyIdentity name="Dogcument" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>eCr92OTmNYLwkPmdm0fEF5z5rdg=</dsig:DigestValue>
+        <dsig:DigestValue>vkGI2kxCO6IlR5gDZFea0jJ8/w4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

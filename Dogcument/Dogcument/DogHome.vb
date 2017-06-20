@@ -2,8 +2,8 @@
 
 Public Class DogHome
 
-    Dim DistroName = "Dogcument"
-    Dim DogTitle = ""
+    Dim DistroName As String = "Dogcument Beta" & " " & Me.ProductVersion
+    Dim DogTitle As String = ""
 
     Private Sub DogHome_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         If DogTitle = "" Then

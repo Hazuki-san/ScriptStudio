@@ -13,9 +13,9 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyCompany("Demza17")> 
 <Assembly: AssemblyProduct("Dogcument")> 
 <Assembly: AssemblyCopyright("Copyright © Demza17 2017")> 
-<Assembly: AssemblyTrademark("")> 
+<Assembly: AssemblyTrademark("Demza17")> 
 
-<Assembly: ComVisible(False)>
+<Assembly: ComVisible(False)> 
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
 <Assembly: Guid("d950f6df-f5b5-4e06-8fbc-5c62227f99b0")> 
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.0")> 
-<Assembly: AssemblyFileVersion("1.0.0")> 
+<Assembly: AssemblyVersion("1.0.0.0")> 
+<Assembly: AssemblyFileVersion("0.2")> 

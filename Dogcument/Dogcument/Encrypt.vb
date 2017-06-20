@@ -91,11 +91,11 @@ Public Class Encrypt
         Me.Label8 = New System.Windows.Forms.Label()
         Me.btnBrowseDecrypt = New System.Windows.Forms.Button()
         Me.txtFileToDecrypt = New System.Windows.Forms.TextBox()
+        Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.Label9 = New System.Windows.Forms.Label()
         Me.pbStatus = New System.Windows.Forms.ProgressBar()
         Me.OpenFileDialog = New System.Windows.Forms.OpenFileDialog()
         Me.FolderBrowserDialog = New System.Windows.Forms.FolderBrowserDialog()
-        Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.Label9 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -346,13 +346,6 @@ Public Class Encrypt
         Me.txtFileToDecrypt.TabIndex = 12
         Me.txtFileToDecrypt.Text = "คลิก ""เลือกดู"" เพื่อเลือกไฟล์" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
-        'pbStatus
-        '
-        Me.pbStatus.Location = New System.Drawing.Point(0, 144)
-        Me.pbStatus.Name = "pbStatus"
-        Me.pbStatus.Size = New System.Drawing.Size(384, 16)
-        Me.pbStatus.TabIndex = 1
-        '
         'TabPage3
         '
         Me.TabPage3.Controls.Add(Me.Label9)
@@ -373,6 +366,13 @@ Public Class Encrypt
         Me.Label9.Text = resources.GetString("Label9.Text")
         Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'pbStatus
+        '
+        Me.pbStatus.Location = New System.Drawing.Point(0, 144)
+        Me.pbStatus.Name = "pbStatus"
+        Me.pbStatus.Size = New System.Drawing.Size(384, 16)
+        Me.pbStatus.TabIndex = 1
+        '
         'Encrypt
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
@@ -382,7 +382,6 @@ Public Class Encrypt
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.MaximizeBox = False
         Me.Name = "Encrypt"
-        Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Dogcrypt"
         Me.TabControl1.ResumeLayout(False)
@@ -524,7 +523,7 @@ Public Class Encrypt
             Dim lngBytesProcessed As Long = 0 'running count of bytes processed
             Dim lngFileLength As Long = fsInput.Length 'the input file's length
             Dim intBytesInCurrentBlock As Integer 'current bytes being processed
-            Dim csCryptoStream As CryptoStream
+            Dim csCryptoStream As CryptoStream = Nothing
             'Declare your CryptoServiceProvider.
             Dim cspRijndael As New System.Security.Cryptography.RijndaelManaged
             'Setup Progress Bar
