@@ -63,6 +63,7 @@ Partial Class ScriptStudio_Editor
         Me.StatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.StudioContext = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.RC_Sel = New System.Windows.Forms.ToolStripMenuItem()
+        Me.VersionX = New System.Windows.Forms.ToolStripStatusLabel()
         Me.StudioMenuStrip.SuspendLayout()
         Me.StudioStatus.SuspendLayout()
         Me.StudioContext.SuspendLayout()
@@ -241,26 +242,26 @@ Partial Class ScriptStudio_Editor
         '
         Me.CustomizeToolStripMenuItem.Enabled = False
         Me.CustomizeToolStripMenuItem.Name = "CustomizeToolStripMenuItem"
-        Me.CustomizeToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.CustomizeToolStripMenuItem.Size = New System.Drawing.Size(173, 22)
         Me.CustomizeToolStripMenuItem.Text = "&Customize"
         '
         'OptionsToolStripMenuItem
         '
         Me.OptionsToolStripMenuItem.Enabled = False
         Me.OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem"
-        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(173, 22)
         Me.OptionsToolStripMenuItem.Text = "&Options"
         '
         'ToolStripSeparator6
         '
         Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(149, 6)
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(170, 6)
         '
         'DogcryptToolStripMenuItem
         '
         Me.DogcryptToolStripMenuItem.Name = "DogcryptToolStripMenuItem"
-        Me.DogcryptToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.DogcryptToolStripMenuItem.Text = "Dogcrypt (ไทย)"
+        Me.DogcryptToolStripMenuItem.Size = New System.Drawing.Size(173, 22)
+        Me.DogcryptToolStripMenuItem.Text = "Encryptor/Decryptor"
         '
         'HelpToolStripMenuItem
         '
@@ -320,7 +321,7 @@ Partial Class ScriptStudio_Editor
         Me.ButtonEx.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonEx.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.ButtonEx.ForeColor = System.Drawing.Color.Black
-        Me.ButtonEx.Location = New System.Drawing.Point(545, 405)
+        Me.ButtonEx.Location = New System.Drawing.Point(557, 28)
         Me.ButtonEx.Name = "ButtonEx"
         Me.ButtonEx.Size = New System.Drawing.Size(75, 23)
         Me.ButtonEx.TabIndex = 1
@@ -331,7 +332,7 @@ Partial Class ScriptStudio_Editor
         'StudioStatus
         '
         Me.StudioStatus.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.StudioStatus.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StatusLabel})
+        Me.StudioStatus.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VersionX, Me.StatusLabel})
         Me.StudioStatus.Location = New System.Drawing.Point(0, 431)
         Me.StudioStatus.Name = "StudioStatus"
         Me.StudioStatus.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
@@ -343,8 +344,8 @@ Partial Class ScriptStudio_Editor
         'StatusLabel
         '
         Me.StatusLabel.Name = "StatusLabel"
-        Me.StatusLabel.Size = New System.Drawing.Size(65, 17)
-        Me.StatusLabel.Text = "Hello World."
+        Me.StatusLabel.Size = New System.Drawing.Size(67, 17)
+        Me.StatusLabel.Text = "Script Studio"
         '
         'StudioContext
         '
@@ -357,6 +358,13 @@ Partial Class ScriptStudio_Editor
         Me.RC_Sel.Name = "RC_Sel"
         Me.RC_Sel.Size = New System.Drawing.Size(117, 22)
         Me.RC_Sel.Text = "Select All"
+        '
+        'VersionX
+        '
+        Me.VersionX.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.VersionX.Name = "VersionX"
+        Me.VersionX.Size = New System.Drawing.Size(42, 17)
+        Me.VersionX.Text = "Version"
         '
         'ScriptStudio_Editor
         '
@@ -421,5 +429,6 @@ Partial Class ScriptStudio_Editor
     Friend WithEvents CloseProjectToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator6 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents DogcryptToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents VersionX As System.Windows.Forms.ToolStripStatusLabel
 
 End Class

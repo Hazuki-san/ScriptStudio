@@ -1,5 +1,3 @@
-D:\visual studio 2010\Projects\ScriptStudio\ScriptStudio\bin\Debug\scriptstudio.exe.manifest
-D:\visual studio 2010\Projects\ScriptStudio\ScriptStudio\bin\Debug\scriptstudio.application
 D:\visual studio 2010\Projects\ScriptStudio\ScriptStudio\bin\Debug\scriptstudio.exe
 D:\visual studio 2010\Projects\ScriptStudio\ScriptStudio\bin\Debug\scriptstudio.pdb
 D:\visual studio 2010\Projects\ScriptStudio\ScriptStudio\bin\Debug\scriptstudio.xml
@@ -11,9 +9,6 @@ D:\visual studio 2010\Projects\ScriptStudio\ScriptStudio\obj\x86\Debug\ScriptStu
 D:\visual studio 2010\Projects\ScriptStudio\ScriptStudio\obj\x86\Debug\ScriptStudio.Resources.resources
 D:\visual studio 2010\Projects\ScriptStudio\ScriptStudio\obj\x86\Debug\GenerateResource.read.1.tlog
 D:\visual studio 2010\Projects\ScriptStudio\ScriptStudio\obj\x86\Debug\GenerateResource.write.1.tlog
-D:\visual studio 2010\Projects\ScriptStudio\ScriptStudio\obj\x86\Debug\scriptstudio.TrustInfo.xml
-D:\visual studio 2010\Projects\ScriptStudio\ScriptStudio\obj\x86\Debug\scriptstudio.exe.manifest
-D:\visual studio 2010\Projects\ScriptStudio\ScriptStudio\obj\x86\Debug\scriptstudio.application
 D:\visual studio 2010\Projects\ScriptStudio\ScriptStudio\obj\x86\Debug\scriptstudio.exe
 D:\visual studio 2010\Projects\ScriptStudio\ScriptStudio\obj\x86\Debug\scriptstudio.xml
 D:\visual studio 2010\Projects\ScriptStudio\ScriptStudio\obj\x86\Debug\scriptstudio.pdb

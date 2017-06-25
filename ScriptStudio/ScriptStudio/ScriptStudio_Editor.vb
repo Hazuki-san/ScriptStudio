@@ -2,11 +2,21 @@
 
 Public Class ScriptStudio_Editor
 
-    Dim DistroName As String = "Demza Script Studio - Beta" & " " & Me.ProductVersion
-    Dim DogTitle As String = ""
+    Dim ReleaseType As String = "Beta"
+    Dim TextBuild As String = "Snapshot"
+    Dim VerMajor As String = My.Application.Info.Version.Major.ToString
+    Dim VerMinor As String = My.Application.Info.Version.Minor.ToString
+    Dim VerMajorRe As String = My.Application.Info.Version.MajorRevision.ToString
+    Dim VerMinorRe As String = My.Application.Info.Version.MinorRevision.ToString
+    Dim VersionDef As String = My.Application.Info.Version.ToString
+    Dim VersionAll As String = VerMajor & "." & VerMinor & "." & VerMajorRe
+    Dim VersionCus As String = ReleaseType & " " & VerMajor & "." & VerMinor & "." & VerMajorRe & " " & "(" & TextBuild & " " & VerMinorRe & ")"
+    '
+    Dim DistroName As String = "Demza Script Studio - " & VersionCus
+    Dim ProjectName As String = Nothing
 
     Private Sub DogHome_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        If DogTitle = "" Then
+        If ProjectName = "" Then
             Me.Text = DistroName
             RichEditor.Hide()
             RichEditor.ReadOnly = True
@@ -15,16 +25,17 @@ Public Class ScriptStudio_Editor
             RichEditor.AppendText(vbNewLine & "To create new Script,")
             RichEditor.AppendText(vbNewLine & "Please click, Files -> New (or press ""CTRL + N"")")
         Else
-            Me.Text = DistroName & " - " & DogTitle
+            Me.Text = DistroName & " - " & ProjectName
             RichEditor.Show()
             RichEditor.ReadOnly = False
-            StatusLabel.Text = DogTitle
+            StatusLabel.Text = ProjectName
         End If
         Me.AllowDrop = True
         RichEditor.AllowDrop = True
+        VersionX.Text = VersionCus
     End Sub
     Private Sub DogHome_Closing(ByVal sender As Object, ByVal e As FormClosingEventArgs) Handles MyBase.FormClosing
-        If DogTitle = "" Then
+        If ProjectName = "" Then
             If MessageBox.Show("Are you sure you want to exit ?", "Exit " & DistroName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
 
                 ' Cancel the Closing event from closing the form.
@@ -43,48 +54,15 @@ Public Class ScriptStudio_Editor
         Dim files() As String = e.Data.GetData(DataFormats.FileDrop)
         For Each path In files
             Dim oReader As StreamReader
-            If path.EndsWith(".dog") = True OrElse path.EndsWith(".txt") = True Then
+            If path.EndsWith(".dsproj") = True OrElse path.EndsWith(".ds") = True OrElse path.EndsWith(".txt") = True Then
                 oReader = New StreamReader(path, True)
                 RichEditor.Text = oReader.ReadToEnd
-                DogTitle = path
-                Me.Text = DistroName & " - " & DogTitle
-                StatusLabel.Text = DogTitle
+                ProjectName = path
+                Me.Text = DistroName & " - " & ProjectName
+                StatusLabel.Text = ProjectName
                 oReader.Close()
                 RichEditor.ReadOnly = False
                 RichEditor.Show()
-            ElseIf path.EndsWith(".dogapp") = True OrElse path.EndsWith(".ds") OrElse path.EndsWith(".scriptx") = True Then
-                Dim dogveri As String
-                Dim apptype As String
-                Dim dogapp As String
-                Dim dogarg1 As String
-                Dim dogend As String
-                Dim lines() As String = IO.File.ReadAllLines(path)
-                dogveri = lines(0)
-                apptype = lines(1)
-                dogapp = lines(2)
-                dogarg1 = lines(3)
-                dogend = lines(lines.Length - 1)
-                'dog
-                If dogarg1 = "" Then
-                    MsgBox("Error: dogarg1 cannot be null.", MsgBoxStyle.Critical, "Failed to start " & apptype & " on the Demza Script Host")
-                ElseIf path.EndsWith(".dogapp") Then
-                    MsgBox("Error: DogApp is unsupported in Demza Script Host", MsgBoxStyle.Critical, "Failed to start " & apptype & " on the Demza Script Host")
-                ElseIf dogveri = "[DogApp]" And apptype.StartsWith("Apptype: ") And apptype.EndsWith("dogapp.popup") And dogend.StartsWith("[DogEnd]") Then
-                    MsgBox(dogapp, MsgBoxStyle.OkOnly, "Demza Script Host")
-                ElseIf dogveri = "[DogApp]" And apptype.StartsWith("Apptype: ") And apptype.EndsWith("dogapp.popup.advanced") And dogend.StartsWith("[DogEnd]") Then
-                    MessageBox.Show(dogapp, dogarg1)
-                ElseIf dogveri = "[DogApp]" And apptype.StartsWith("Apptype: ") And apptype.EndsWith("dogapp.startshell") And dogend.StartsWith("[DogEnd]") Then
-                    Process.Start(dogapp)
-                ElseIf path.EndsWith(".ds") And dogveri = "[Dogscript.Start]" And apptype.StartsWith("Apptype: ") And apptype.EndsWith("dogscript.script.directaccess") And dogend.StartsWith("[Dogscript.End]") Then
-                    If dogapp = "dogcument.stop" Then
-                    ElseIf dogapp = "dogcument.error" OrElse dogapp = "dogcument.bark" And dogarg1.StartsWith("enabled: ") And dogarg1.EndsWith("true") Then
-                        MessageBox.Show("Error: Cursed by Script", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    End If
-                ElseIf path.EndsWith(".ds") And dogveri = "[Dogscript.Start]" And apptype.StartsWith("Apptype: ") And apptype.EndsWith("x.dogapp.popup.advanced") And dogend.StartsWith("[Dogscript.End]") Then
-                    MessageBox.Show(dogapp, "ScriptX - " & dogarg1)
-                Else
-                    MsgBox("Error: Script Error, Please Check your script again.", MsgBoxStyle.Critical, "Failed to start " & apptype & " on the Demza Script Host")
-                End If
             Else
                 MessageBox.Show("This format is not supported.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
@@ -104,12 +82,12 @@ Public Class ScriptStudio_Editor
         Dim files() As String = e.Data.GetData(DataFormats.FileDrop)
         For Each path In files
             Dim oReader As StreamReader
-            If path.EndsWith(".dog") = True OrElse path.EndsWith(".txt") OrElse path.EndsWith(".ds") Then
+            If path.EndsWith(".dsproj") = True OrElse path.EndsWith("ds") = True OrElse path.EndsWith(".txt") OrElse path.EndsWith(".ds") Then
                 oReader = New StreamReader(path, True)
                 RichEditor.Text = oReader.ReadToEnd
-                DogTitle = path
-                Me.Text = DistroName & " - " & DogTitle
-                StatusLabel.Text = DogTitle
+                ProjectName = path
+                Me.Text = DistroName & " - " & ProjectName
+                StatusLabel.Text = ProjectName
                 oReader.Close()
                 RichEditor.ReadOnly = False
                 RichEditor.Show()
@@ -147,14 +125,14 @@ Public Class ScriptStudio_Editor
     Private Sub NewToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NewToolStripMenuItem.Click
         Dim saveFileDialog1 As New SaveFileDialog()
 
-        saveFileDialog1.Filter = "Script Studio Simple Code (*.dog)|*.dog|Demza Script (*.ds)|*.ds|All files (*.*)|*.*"
+        saveFileDialog1.Filter = "Demza Script Project (*.dsproj)|*.dsproj|All files (*.*)|*.*"
         saveFileDialog1.FilterIndex = 1
-        saveFileDialog1.DefaultExt = "dog"
+        saveFileDialog1.DefaultExt = "dsproj"
         saveFileDialog1.FileName = ""
         saveFileDialog1.RestoreDirectory = True
 
         If saveFileDialog1.ShowDialog() = DialogResult.OK Then
-            If DogTitle = "" = False Then
+            If ProjectName = "" = False Then
                 If MessageBox.Show("Do you want to save this file before opening another files ?", "Dropped!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                     SaveToolStripMenuItem.PerformClick()
                 End If
@@ -166,9 +144,9 @@ Public Class ScriptStudio_Editor
             End If
             RichEditor.Text = ""
             System.IO.File.WriteAllText(saveFileDialog1.FileName, RichEditor.Text)
-            DogTitle = saveFileDialog1.FileName
-            Me.Text = DistroName & " - " & DogTitle
-            StatusLabel.Text = DogTitle
+            ProjectName = saveFileDialog1.FileName
+            Me.Text = DistroName & " - " & ProjectName
+            StatusLabel.Text = ProjectName
         End If
     End Sub
 
@@ -178,13 +156,13 @@ Public Class ScriptStudio_Editor
 
         OpenFileDialog1.CheckFileExists = True
         OpenFileDialog1.CheckPathExists = True
-        OpenFileDialog1.DefaultExt = "dog"
+        OpenFileDialog1.DefaultExt = "dsproj"
         OpenFileDialog1.FileName = ""
-        OpenFileDialog1.Filter = "Script Studio Simple Code (*.dog)|*.dog|Demza Script (*.ds)|*.ds|All files (*.*)|*.*"
+        OpenFileDialog1.Filter = "Demza Script Project (*.dsproj)|*.dsproj|All files (*.*)|*.*"
         OpenFileDialog1.Multiselect = False
 
         If OpenFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
-            If DogTitle = "" = False Then
+            If ProjectName = "" = False Then
                 If MessageBox.Show("Do you want to save this file before opening another files ?", "Dropped!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                     SaveToolStripMenuItem.PerformClick()
                 End If
@@ -196,9 +174,9 @@ Public Class ScriptStudio_Editor
             End If
             oReader = New StreamReader(OpenFileDialog1.FileName, True)
             RichEditor.Text = oReader.ReadToEnd
-            DogTitle = OpenFileDialog1.FileName
-            Me.Text = DistroName & " - " & DogTitle
-            StatusLabel.Text = DogTitle
+            ProjectName = OpenFileDialog1.FileName
+            Me.Text = DistroName & " - " & ProjectName
+            StatusLabel.Text = ProjectName
             oReader.Close()
         End If
     End Sub
@@ -207,22 +185,22 @@ Public Class ScriptStudio_Editor
         If RichEditor.ReadOnly = True Then
             MessageBox.Show("To create new file, Please click ""File -> New""", "Bark!", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
-            If My.Computer.FileSystem.FileExists(DogTitle) = True Then
-                My.Computer.FileSystem.WriteAllText(DogTitle, RichEditor.Text, False)
-            ElseIf My.Computer.FileSystem.FileExists(DogTitle) = False Then
+            If My.Computer.FileSystem.FileExists(ProjectName) = True Then
+                My.Computer.FileSystem.WriteAllText(ProjectName, RichEditor.Text, False)
+            ElseIf My.Computer.FileSystem.FileExists(ProjectName) = False Then
                 Dim saveFileDialog1 As New SaveFileDialog()
 
-                saveFileDialog1.Filter = "Script Studio Simple Code (*.dog)|*.dog|Demza Script (*.ds)|*.ds|All files (*.*)|*.*"
+                saveFileDialog1.Filter = "Demza Script Project (*.dsproj)|*.dsproj|All files (*.*)|*.*"
                 saveFileDialog1.FilterIndex = 1
-                saveFileDialog1.DefaultExt = "dog"
+                saveFileDialog1.DefaultExt = "dsproj"
                 saveFileDialog1.FileName = ""
                 saveFileDialog1.RestoreDirectory = True
 
                 If saveFileDialog1.ShowDialog() = DialogResult.OK Then
                     System.IO.File.WriteAllText(saveFileDialog1.FileName, RichEditor.Text)
-                    DogTitle = saveFileDialog1.FileName
-                    Me.Text = DistroName & " - " & DogTitle
-                    StatusLabel.Text = DogTitle
+                    ProjectName = saveFileDialog1.FileName
+                    Me.Text = DistroName & " - " & ProjectName
+                    StatusLabel.Text = ProjectName
                 End If
             End If
         End If
@@ -234,17 +212,17 @@ Public Class ScriptStudio_Editor
         Else
             Dim saveFileDialog1 As New SaveFileDialog()
 
-            saveFileDialog1.Filter = "Script Studio Simple Code (*.dog)|*.dog|Demza Script (*.ds)|*.ds|All files (*.*)|*.*"
+            saveFileDialog1.Filter = "Demza Script Project (*.dsproj)|*.dsproj|All files (*.*)|*.*"
             saveFileDialog1.FilterIndex = 1
-            saveFileDialog1.DefaultExt = "dog"
+            saveFileDialog1.DefaultExt = "dsproj"
             saveFileDialog1.FileName = ""
             saveFileDialog1.RestoreDirectory = True
 
             If saveFileDialog1.ShowDialog() = DialogResult.OK Then
                 System.IO.File.WriteAllText(saveFileDialog1.FileName, RichEditor.Text)
-                DogTitle = saveFileDialog1.FileName
-                Me.Text = DistroName & " - " & DogTitle
-                StatusLabel.Text = DogTitle
+                ProjectName = saveFileDialog1.FileName
+                Me.Text = DistroName & " - " & ProjectName
+                StatusLabel.Text = ProjectName
             End If
         End If
     End Sub
@@ -301,12 +279,12 @@ Public Class ScriptStudio_Editor
     End Sub
 
     Private Sub CloseProjectToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CloseProjectToolStripMenuItem.Click
-        If DogTitle = "" = False Then
+        If ProjectName = "" = False Then
             If MessageBox.Show("Do you want to save this file before closing ?", "Exit " & DistroName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                 SaveToolStripMenuItem.PerformClick()
             End If
         End If
-        DogTitle = ""
+        ProjectName = ""
         Me.Text = DistroName
         RichEditor.Hide()
         RichEditor.ReadOnly = True

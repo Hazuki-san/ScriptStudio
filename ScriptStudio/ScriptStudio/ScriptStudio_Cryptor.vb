@@ -132,7 +132,7 @@ Public Class ScriptStudio_Cryptor
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Size = New System.Drawing.Size(376, 118)
         Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "เข้ารหัสไฟล์"
+        Me.TabPage1.Text = "Encrypt File"
         '
         'btnChangeEncrypt
         '
@@ -141,7 +141,7 @@ Public Class ScriptStudio_Cryptor
         Me.btnChangeEncrypt.Name = "btnChangeEncrypt"
         Me.btnChangeEncrypt.Size = New System.Drawing.Size(72, 21)
         Me.btnChangeEncrypt.TabIndex = 11
-        Me.btnChangeEncrypt.Text = "เปลี่ยนแปลง"
+        Me.btnChangeEncrypt.Text = "Change"
         '
         'txtDestinationEncrypt
         '
@@ -157,7 +157,7 @@ Public Class ScriptStudio_Cryptor
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(88, 16)
         Me.Label4.TabIndex = 9
-        Me.Label4.Text = "ไฟล์ปลายทาง:"
+        Me.Label4.Text = "File destination:"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'btnEncrypt
@@ -168,7 +168,7 @@ Public Class ScriptStudio_Cryptor
         Me.btnEncrypt.Name = "btnEncrypt"
         Me.btnEncrypt.Size = New System.Drawing.Size(72, 32)
         Me.btnEncrypt.TabIndex = 8
-        Me.btnEncrypt.Text = "เข้ารหัส"
+        Me.btnEncrypt.Text = "Encrypt"
         '
         'txtConPassEncrypt
         '
@@ -192,7 +192,7 @@ Public Class ScriptStudio_Cryptor
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(85, 16)
         Me.Label1.TabIndex = 5
-        Me.Label1.Text = "ไฟล์ที่จะเข้ารหัส:"
+        Me.Label1.Text = "File to encrypt:"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label3
@@ -201,7 +201,7 @@ Public Class ScriptStudio_Cryptor
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(104, 16)
         Me.Label3.TabIndex = 4
-        Me.Label3.Text = "ยืนยันรหัสผ่าน:"
+        Me.Label3.Text = "Confirm password:"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label2
@@ -210,7 +210,7 @@ Public Class ScriptStudio_Cryptor
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(88, 16)
         Me.Label2.TabIndex = 3
-        Me.Label2.Text = "ป้อนรหัสผ่าน:"
+        Me.Label2.Text = "Type password:"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'btnBrowseEncrypt
@@ -219,7 +219,7 @@ Public Class ScriptStudio_Cryptor
         Me.btnBrowseEncrypt.Name = "btnBrowseEncrypt"
         Me.btnBrowseEncrypt.Size = New System.Drawing.Size(72, 21)
         Me.btnBrowseEncrypt.TabIndex = 2
-        Me.btnBrowseEncrypt.Text = "เลือกดู"
+        Me.btnBrowseEncrypt.Text = "Browse"
         '
         'txtFileToEncrypt
         '
@@ -228,7 +228,7 @@ Public Class ScriptStudio_Cryptor
         Me.txtFileToEncrypt.ReadOnly = True
         Me.txtFileToEncrypt.Size = New System.Drawing.Size(184, 20)
         Me.txtFileToEncrypt.TabIndex = 1
-        Me.txtFileToEncrypt.Text = "คลิก ""เลือกดู"" เพื่อเลือกไฟล์"
+        Me.txtFileToEncrypt.Text = "Click Browse to load file."
         '
         'TabPage2
         '
@@ -248,7 +248,7 @@ Public Class ScriptStudio_Cryptor
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Size = New System.Drawing.Size(376, 118)
         Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "ถอดรหัสไฟล์"
+        Me.TabPage2.Text = "Decrypt File"
         '
         'btnChangeDecrypt
         '
@@ -257,7 +257,7 @@ Public Class ScriptStudio_Cryptor
         Me.btnChangeDecrypt.Name = "btnChangeDecrypt"
         Me.btnChangeDecrypt.Size = New System.Drawing.Size(72, 21)
         Me.btnChangeDecrypt.TabIndex = 22
-        Me.btnChangeDecrypt.Text = "เปลี่ยนแปลง"
+        Me.btnChangeDecrypt.Text = "Change"
         '
         'txtDestinationDecrypt
         '
@@ -273,7 +273,7 @@ Public Class ScriptStudio_Cryptor
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(88, 16)
         Me.Label5.TabIndex = 20
-        Me.Label5.Text = "ไฟล์ปลายทาง:"
+        Me.Label5.Text = "File destination:"
         Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'btnDecrypt
@@ -284,7 +284,7 @@ Public Class ScriptStudio_Cryptor
         Me.btnDecrypt.Name = "btnDecrypt"
         Me.btnDecrypt.Size = New System.Drawing.Size(72, 32)
         Me.btnDecrypt.TabIndex = 19
-        Me.btnDecrypt.Text = "ถอดรหัส"
+        Me.btnDecrypt.Text = "Decrypt"
         '
         'txtConPassDecrypt
         '
@@ -308,7 +308,7 @@ Public Class ScriptStudio_Cryptor
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(90, 16)
         Me.Label6.TabIndex = 16
-        Me.Label6.Text = "ไฟล์ที่จะถอดรหัส:"
+        Me.Label6.Text = "File to decrypt:"
         Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label7
@@ -317,7 +317,7 @@ Public Class ScriptStudio_Cryptor
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(104, 16)
         Me.Label7.TabIndex = 15
-        Me.Label7.Text = "ยืนยันรหัสผ่าน:"
+        Me.Label7.Text = "Confirm password:"
         Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label8
@@ -326,7 +326,7 @@ Public Class ScriptStudio_Cryptor
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(88, 16)
         Me.Label8.TabIndex = 14
-        Me.Label8.Text = "ป้อนรหัสผ่าน:"
+        Me.Label8.Text = "Type password:"
         Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'btnBrowseDecrypt
@@ -335,7 +335,7 @@ Public Class ScriptStudio_Cryptor
         Me.btnBrowseDecrypt.Name = "btnBrowseDecrypt"
         Me.btnBrowseDecrypt.Size = New System.Drawing.Size(72, 21)
         Me.btnBrowseDecrypt.TabIndex = 13
-        Me.btnBrowseDecrypt.Text = "เลือกดู"
+        Me.btnBrowseDecrypt.Text = "Browse"
         '
         'txtFileToDecrypt
         '
@@ -344,7 +344,7 @@ Public Class ScriptStudio_Cryptor
         Me.txtFileToDecrypt.ReadOnly = True
         Me.txtFileToDecrypt.Size = New System.Drawing.Size(184, 20)
         Me.txtFileToDecrypt.TabIndex = 12
-        Me.txtFileToDecrypt.Text = "คลิก ""เลือกดู"" เพื่อเลือกไฟล์" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.txtFileToDecrypt.Text = "Click Browse to load file."
         '
         'TabPage3
         '
@@ -354,7 +354,7 @@ Public Class ScriptStudio_Cryptor
         Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage3.Size = New System.Drawing.Size(376, 118)
         Me.TabPage3.TabIndex = 2
-        Me.TabPage3.Text = "เกี่ยวกับ"
+        Me.TabPage3.Text = "About"
         Me.TabPage3.UseVisualStyleBackColor = True
         '
         'Label9
@@ -373,7 +373,7 @@ Public Class ScriptStudio_Cryptor
         Me.pbStatus.Size = New System.Drawing.Size(384, 16)
         Me.pbStatus.TabIndex = 1
         '
-        'Encrypt
+        'ScriptStudio_Cryptor
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(382, 156)
@@ -381,7 +381,7 @@ Public Class ScriptStudio_Cryptor
         Me.Controls.Add(Me.TabControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.MaximizeBox = False
-        Me.Name = "Encrypt"
+        Me.Name = "ScriptStudio_Cryptor"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Dogcrypt"
         Me.TabControl1.ResumeLayout(False)

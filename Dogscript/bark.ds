@@ -1,5 +1,0 @@
-﻿[Dogscript.Start]
-Apptype: dogscript.script.directaccess
-dogcument.bark
-enabled: true
-[Dogscript.End]
